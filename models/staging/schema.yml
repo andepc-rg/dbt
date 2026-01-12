@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: dbt_test
+    schema: raw_data
+    tables:
+      - name: sales_orders
+        description: "Raw sales orders from OLTP system"

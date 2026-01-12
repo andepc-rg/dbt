@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fct_sales_orders
+    description: "Fact table for sales orders"
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+
+      - name: order_amount
+        tests:
+          - not_null
