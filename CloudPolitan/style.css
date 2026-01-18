@@ -1,0 +1,33 @@
+/* Placeholder Styling for Professional Look */
+.photo-placeholder, .map-placeholder {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-weight: 600;
+    min-height: 200px;
+    border: 1px dashed #cbd5e1;
+}
+
+/* Service Page Specifics */
+.service-hero {
+    padding: 100px 0;
+    background: var(--primary);
+    color: white;
+    text-align: center;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 16px;
+}

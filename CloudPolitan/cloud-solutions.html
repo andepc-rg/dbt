@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Solutions & Services | CloudPolitan Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --secondary: #00d4ff;
+            --text-dark: #1a202c;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 30px;
+            min-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown:hover .mega-menu {
+            display: block;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .mega-col h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .mega-col a {
+            display: block;
+            color: var(--text-light);
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mega-col a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn-sm {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-sm:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .page-header {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 50%, #00d4ff 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .services-section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 44px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            padding: 50px 40px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            color: var(--text-light);
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .service-detail {
+            background: linear-gradient(135deg, #e6f2ff, #f8f9fa);
+            padding: 50px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .service-detail h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-detail p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .benefit-item {
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .benefit-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .benefit-item p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h3,
+        .footer-grid h4 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .footer-grid p,
+        .footer-grid a {
+            color: #999;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-grid a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .service-detail {
+                padding: 40px 20px;
+            }
+
+            .service-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Cloud<span>Politan</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="cloud-solutions.html">Services ▾</a>
+                    <div class="mega-menu">
+                        <div class="mega-grid">
+                            <div class="mega-col">
+                                <h4>Engineering</h4>
+                                <a href="cloud-solutions.html">Cloud Solutions</a>
+                                <a href="cloud-solutions.html#devops">DevOps</a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Security</h4>
+                                <a href="cloud-solutions.html#security">Cybersecurity</a>
+                                <a href="cloud-solutions.html#managed-it">Managed IT</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="contact.html" class="cta-btn-sm">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive cloud and cybersecurity solutions tailored to your enterprise needs.</p>
+        </div>
+    </div>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Enterprise-grade cloud infrastructure powered by AWS and Azure. We design, implement, and manage scalable cloud environments tailored to your business needs.</p>
+                    <ul class="service-features">
+                        <li>AWS & Azure Architecture</li>
+                        <li>Cloud Migration Services</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Multi-cloud Strategy</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+
+                <div class="service-card" id="devops">
+                    <div class="service-icon">⚙️</div>
+                    <h3>DevOps Engineering</h3>
+                    <p>Automate your deployment pipelines and accelerate time-to-market with modern CI/CD practices. Achieve 99.9% uptime with continuous integration and deployment.</p>
+                    <ul class="service-features">
+                        <li>CI/CD Pipeline Setup</li>
+                        <li>Container Orchestration</li>
+                        <li>Infrastructure Automation</li>
+                        <li>Monitoring & Logging</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+
+                <div class="service-card" id="security">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your enterprise assets with advanced threat detection, vulnerability management, and comprehensive security audits from our certified security experts.</p>
+                    <ul class="service-features">
+                        <li>Security Audit & Assessment</li>
+                        <li>Threat Detection</li>
+                        <li>Penetration Testing</li>
+                        <li>Compliance Management</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+
+                <div class="service-card" id="managed-it">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Managed IT Services</h3>
+                    <p>24/7 managed IT services that keep your infrastructure secure, optimized, and operational. Proactive monitoring and support to minimize downtime.</p>
+                    <ul class="service-features">
+                        <li>24/7 Monitoring</li>
+                        <li>Patch Management</li>
+                        <li>Backup & Disaster Recovery</li>
+                        <li>Help Desk Support</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Engineering</h3>
+                    <p>Build robust data pipelines and machine learning infrastructure to transform raw data into actionable intelligence for strategic decision-making.</p>
+                    <ul class="service-features">
+                        <li>Data Pipeline Design</li>
+                        <li>Big Data Architecture</li>
+                        <li>ML Model Development</li>
+                        <li>Analytics Platforms</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Consulting & Strategy</h3>
+                    <p>Strategic technology consulting to align your IT initiatives with business objectives. Digital transformation roadmap and technology architecture planning.</p>
+                    <ul class="service-features">
+                        <li>Digital Transformation</li>
+                        <li>Technology Strategy</li>
+                        <li>Architecture Planning</li>
+                        <li>Cost Optimization</li>
+                    </ul>
+                    <a href="contact.html" class="cta-btn">Get Started</a>
+                </div>
+            </div>
+
+            <div class="service-detail">
+                <h2>Why Choose CloudPolitan?</h2>
+                <p>We combine deep technical expertise with a customer-centric approach to deliver solutions that drive real business value. Our team of certified professionals brings years of experience in enterprise cloud and security implementations.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <h4>✓ Expertise</h4>
+                        <p>50+ certified cloud and security professionals</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>✓ Reliability</h4>
+                        <p>99.9% uptime SLA and 24/7 support</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>✓ Innovation</h4>
+                        <p>Latest technologies and best practices</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>✓ Partnership</h4>
+                        <p>Long-term relationships with 500+ clients</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>✓ Cost Effective</h4>
+                        <p>Optimized solutions that maximize ROI</p>
+                    </div>
+                    <div class="benefit-item">
+                        <h4>✓ Security First</h4>
+                        <p>Enterprise-grade security at every layer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>CloudPolitan</h3>
+                    <p>Hyderabad's leading IT consultancy, specializing in cloud infrastructure and cybersecurity solutions.</p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="cloud-solutions.html">Cloud Solutions</a></li>
+                        <li><a href="cloud-solutions.html#security">Security Audit</a></li>
+                        <li><a href="cloud-solutions.html#devops">DevOps</a></li>
+                        <li><a href="cloud-solutions.html">Data Engineering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Info</h4>
+                    <p>Email: <a href="mailto:veera@cloudpolitan.com">veera@cloudpolitan.com</a></p>
+                    <p>Phone: <a href="tel:+91-8790636868">+91-8790636868</a></p>
+                    <p>Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CloudPolitan Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

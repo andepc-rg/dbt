@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CloudPolitan Technologies</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --secondary: #00d4ff;
+            --text-dark: #1a202c;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 30px;
+            min-width: 400px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown:hover .mega-menu {
+            display: block;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .mega-col h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .mega-col a {
+            display: block;
+            color: var(--text-light);
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .mega-col a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn-sm {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-sm:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .page-header {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 50%, #00d4ff 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 44px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%);
+            border-radius: 15px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.3);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.1) 20px
+            );
+            animation: movePattern 20s linear infinite;
+        }
+
+        @keyframes movePattern {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .about-image-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .about-image-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .about-image-text {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .about-image-subtext {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .value-card {
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .team-member h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .team-member .bio {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-grid h3,
+        .footer-grid h4 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .footer-grid p,
+        .footer-grid a {
+            color: #999;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-grid a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-grid ul {
+            list-style: none;
+        }
+
+        .footer-grid li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .about-text h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Cloud<span>Politan</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="cloud-solutions.html">Services ▾</a>
+                    <div class="mega-menu">
+                        <div class="mega-grid">
+                            <div class="mega-col">
+                                <h4>Engineering</h4>
+                                <a href="cloud-solutions.html">Cloud Solutions</a>
+                                <a href="cloud-solutions.html#devops">DevOps</a>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Security</h4>
+                                <a href="cloud-solutions.html#security">Cybersecurity</a>
+                                <a href="cloud-solutions.html#managed-it">Managed IT</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="contact.html" class="cta-btn-sm">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>About CloudPolitan</h1>
+            <p>Transforming enterprise infrastructure through innovative cloud solutions and cybersecurity expertise.</p>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 200, CloudPolitan Technologies has grown to become Hyderabad's leading IT consultancy specializing in cloud infrastructure and cybersecurity solutions.</p>
+                    <p>We partner with enterprises of all sizes to orchestrate their digital transformation journey. Our team of expert professionals brings together deep technical knowledge with strategic business insights.</p>
+                    <p>With over 500+ satisfied clients and a track record of delivering 99.9% uptime, we are committed to excellence in every project we undertake.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-content">
+                        <span class="about-image-icon">🚀</span>
+                        <div class="about-image-text">Cloud Transformation</div>
+                        <div class="about-image-subtext">Enterprise Infrastructure Solutions</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>🎯 Excellence</h3>
+                    <p>We strive for perfection in every solution we deliver, ensuring our clients receive the highest quality service.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🤝 Partnership</h3>
+                    <p>We view our clients as partners, working collaboratively to achieve their business objectives and growth.</p>
+                </div>
+                <div class="value-card">
+                    <h3>💡 Innovation</h3>
+                    <p>We embrace cutting-edge technologies and methodologies to keep our solutions ahead of the curve.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🔒 Security</h3>
+                    <p>Security is at the core of everything we do, protecting our clients' data and infrastructure.</p>
+                </div>
+                <div class="value-card">
+                    <h3>⚡ Reliability</h3>
+                    <p>Our 24/7 support ensures your systems run smoothly, and we're here when you need us.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🌍 Global Reach</h3>
+                    <p>While based in Hyderabad, we serve clients globally with world-class cloud and security solutions.</p>
+                </div>
+            </div>
+
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💼</div>
+                    <h3>Rajesh Kumar</h3>
+                    <p>Chief Executive Officer</p>
+                    <div class="bio">Visionary leader with 20+ years of enterprise IT experience.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👩‍💻</div>
+                    <h3>Priya Singh</h3>
+                    <p>Chief Technology Officer</p>
+                    <div class="bio">Cloud architect specializing in AWS and Azure infrastructure.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>Arjun Patel</h3>
+                    <p>Head of Security</p>
+                    <div class="bio">Cybersecurity expert with certifications in advanced threat detection.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👩‍💼</div>
+                    <h3>Neha Gupta</h3>
+                    <p>VP, Client Relations</p>
+                    <div class="bio">Client success leader ensuring long-term partnership growth.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍🔧</div>
+                    <h3>Vikram Das</h3>
+                    <p>Senior DevOps Engineer</p>
+                    <div class="bio">CI/CD pipeline specialist with expertise in automation.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👩‍🔬</div>
+                    <h3>Anjali Sharma</h3>
+                    <p>Data Engineering Lead</p>
+                    <div class="bio">Big Data and ML pipeline architect.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>CloudPolitan</h3>
+                    <p>Hyderabad's leading IT consultancy, specializing in cloud infrastructure and cybersecurity solutions.</p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="cloud-solutions.html">Cloud Solutions</a></li>
+                        <li><a href="cloud-solutions.html#security">Security Audit</a></li>
+                        <li><a href="cloud-solutions.html#devops">DevOps</a></li>
+                        <li><a href="cloud-solutions.html">Data Engineering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Info</h4>
+                    <p>Email: <a href="mailto:veera@cloudpolitan.com">veera@cloudpolitan.com</a></p>
+                    <p>Phone: <a href="tel:+91-8790636868">+91-8790636868</a></p>
+                    <p>Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CloudPolitan Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
